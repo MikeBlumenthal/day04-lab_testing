@@ -66,9 +66,14 @@ class TestFriends < MiniTest::Test
   end
 
   # 1. For a given person, return their name
-  def test_getting_name
+  def test_getting_name_daphne
     result = get_name(@person5)
     assert_equal("Daphne", result)
+  end
+
+  def test_getting_name_daphne
+    result = get_name(@person1)
+    assert_equal("Shaggy", result)
   end
 
   # 2. For a given person, return their favourite tv show
@@ -108,6 +113,10 @@ class TestFriends < MiniTest::Test
     assert_equal(3, array_size_end.length)
   end
 
+  def test_remove_friend_for_person4
+    remove_friend(@person4, "Velma")
+    assert_equal(false, @person4[:friends].include?("Velma"))
+  end
   # 6. Find the total of everyone's money
   # (hint: use the @people array, remember how we checked the total number of eggs yesterday?)
   def test_total_all_the_money
